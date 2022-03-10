@@ -59,9 +59,9 @@ export class JsDocsComponent implements OnInit {
   public ngOnInit(): void {
     document.body.addEventListener('touchstart',() => { });
     this.tocContent = './assets/md/toc/toc' + '.md';
-    this.pocContent = './assets/md/poc/introduction' + '.md';
-    this.mocContent = './assets/md/main/introduction' + '.md';
-    this.breadcrumbs = 'Js Docs / Introduction';
+    this.pocContent = './assets/md/poc/preface' + '.md';
+    this.mocContent = './assets/md/main/preface' + '.md';
+    this.breadcrumbs = 'Js Docs / Preface';
     setTimeout(() =>{
       this.getParentElements();
     },0);

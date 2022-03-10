@@ -1,4 +1,4 @@
-$primary-color: #03A9F4
+$primary-color: #03a9f4
 app-js-docs
   .wrap
     display: flex
@@ -49,7 +49,17 @@ app-js-docs
         padding: .5rem 2rem
         box-shadow: 0 0.5rem 1rem -0.25rem #00000080
       p
-        text-indent: 2em
+        line-height: 1.5rem
+      .imgCenter
+        display: block
+        margin-left: auto
+        margin-right: auto
+      .smallImg
+        width: 35%
+      .middleImg
+        width: 65%
+      .largeImg
+        width: 100%
 
   footer
     > div
@@ -102,15 +112,16 @@ app-js-docs
         width: 100%
         height: 3rem
         line-height: 3rem
-        background: #EFD9FD
+        background: rgb(66, 193, 252)
         text-align: center
-        position: absolute
+        position: fixed
         top: 0
         left: 0
         > label.doc_title
           display: block
           width: max-content
           line-height: 3rem
+          color:#fff
           margin: 0 auto
           &::after
             content: '☰'
@@ -146,3 +157,6 @@ app-js-docs
     .btn_top
       bottom: 20vh
       right: 10%
+    .smallImg, .middleImg
+      width: 100% !important
+
