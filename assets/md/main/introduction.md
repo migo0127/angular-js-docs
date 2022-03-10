@@ -10,30 +10,30 @@ JavaScript 和 HTML 與 CSS 並列網頁前端三大核心技術，然而，HTML
 - CSS 階層樣式表，網頁的視覺與風格呈現，就像是外表、樣貌。
 - JavaScript 驅動程式語言，用來使靜態更新與使用者互動、操作，就像是行為、大腦。
 
-<img src="/assets/md/img/html_css_js.png" alt="HTML、CSS、JS" class="imgCenter middleImg">
+<img src="assets/md/img/html_css_js.png" alt="HTML、CSS、JS" class="imgCenter middleImg">
 
-# JavaScript 的特性
+## JavaScript 的特性
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 完整的 JavaScript
 
 完整的 JavaScript 包含以下：
 
-- ECMAScript： 
-<br>
+- ECMAScript： <br>
 是語法標準的規格書，由 ECMA International 組織訂定了語法標準，而各軟體工具採用其制訂的標準，逕行開發出各自版本的 JavaScript。
-<br>
-- BOM (瀏覽器物件模型)：
-<br>
 
-<br>
-- DOM (文件物件模型)：
-<br>
+- BOM (瀏覽器物件模型)：<br>
+BOM
 
+- DOM (文件物件模型)：<br>
+DOM
 <br>
 
 
-## ECMAScript v.s. JavaScript
 
 

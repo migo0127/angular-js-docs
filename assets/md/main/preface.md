@@ -11,8 +11,8 @@ Hi ~ 各位好，本人是一位非本科系、半路出家的 junior 前端工�
 
 從資策會學習出來後，很幸運的進入了目前正在工作的公司，接觸了真正實務經驗後才發現可以學習的東西實在是太多太廣也太深奧了，但也很高興自己終於真正的踏入了前端領域，雖然要學習的東西還很多，但基本脫離不了前端三大支柱 --- **HTML、CSS、JavaScript**，目前也將依 JavaScript 作為目標，期許自己在閱讀完本書後，可以更加靈活運用相關技能，為工作帶來更高效的寫法。
 
-<!-- ![JavaSctipt](/assets/md/img/js.png "JS Logo") -->
-<img src="/assets/md/img/jsLogo.png" alt="JS Logo" class="imgCenter smallImg">
+<!-- ![JavaSctipt](assets/md/img/js.png "JS Logo") -->
+<img src="assets/md/img/jsLogo.png" alt="JS Logo" class="imgCenter smallImg">
 
 <br>
 
