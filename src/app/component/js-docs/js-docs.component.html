@@ -1,0 +1,50 @@
+
+<ng-container *ngIf="pocContent && tocContent && mocContent">
+  <div class="wrap">
+    <aside>
+      <label class="doc_title">{{ isMoblieDevice ? 'JavaScript Document' : 'Table of Contents' }} </label>
+      <div  id="tocContent"
+            markdown
+            [src]="tocContent"
+            >
+      </div>
+    </aside>
+    <main>
+      <div class="bread_crumb">{{ breadcrumbs }}</div>
+      <div  id="mainContent"
+            markdown
+            [src]="mocContent"></div>
+    </main>
+
+    <aside>
+      <label class="doc_title">Page of Contents</label>
+      <div  id="pocContent"
+            markdown
+            [src]="pocContent">
+      </div>
+    </aside>
+
+  </div>
+</ng-container>
+
+  <footer>
+    <div>
+      <span>本文整理內容參考</span>
+      <a href="https://www.eslite.com/product/1001133102681990538001" target="_black" title="JavaScript大全 e7">《JavaScript大全 - e7》</a>
+      <span>，純屬整理分享，非商業用途。</span>
+    </div>
+    <div>
+      <span>若有問題，煩請與網頁製作者聯繫：</span>
+      <a href="mailTo:crazyryo@yahoo.com.tw">Migo</a>
+      <span>，謝謝。</span>
+    </div>
+  </footer>
+
+  <div class="btn_top"
+      [ngClass]="{ 'btn_active': pageYoffset > 300 }">
+    <button type="button"
+            (click)="scrollToTop()">
+      &#8593;
+    </button>
+  </div>
+
