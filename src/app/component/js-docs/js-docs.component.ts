@@ -19,11 +19,7 @@ export class JsDocsComponent implements OnInit {
   private basePocUrl: string = `./assets/md/poc/`;
   public breadcrumbs: string;
   private isClick: boolean;
-
-  public get isMoblieDevice(){
-    let isMobileDevice = document.body.clientWidth <= 540;
-    return isMobileDevice;
-  }
+  private tocLiValue: string | null;
 
   constructor(
     public elerf: ElementRef,
@@ -58,27 +54,44 @@ export class JsDocsComponent implements OnInit {
 
   public ngOnInit(): void {
     document.body.addEventListener('touchstart',() => { });
+    const sessionItem = JSON.parse(sessionStorage.getItem('js-docs')!);
     this.tocContent = './assets/md/toc/toc' + '.md';
-    this.pocContent = './assets/md/poc/preface' + '.md';
-    this.mocContent = './assets/md/main/preface' + '.md';
+    this.mocContent = sessionItem ? `${this.baseMocUrl}/${sessionItem.tocValue}.md` : `${this.baseMocUrl}/preface.md`;
+    this.pocContent = sessionItem ? `${this.basePocUrl}/${sessionItem.tocValue}.md` : `${this.basePocUrl}/preface.md`;
     this.breadcrumbs = 'Js Docs / Preface';
     setTimeout(() =>{
-      this.getParentElements();
+      this.getParentElements(sessionItem);
     },0);
   }
 
-  private getParentElements(): void{
+  private getParentElements(sessionItem: any): void{
     this.toc = <HTMLDivElement>this.elerf.nativeElement.querySelector('#tocContent');
     this.moc = <HTMLDivElement>this.elerf.nativeElement.querySelector('#mainContent');
     this.poc = <HTMLDivElement>this.elerf.nativeElement.querySelector('#pocContent');
+    if(sessionItem && !(sessionItem?.isInit)){
+      setTimeout(() => {
+        this.toggleTocContent([], sessionItem);
+      }, 0);
+    }else{
+      const sessionValue: string = JSON.stringify({ isInit: true });
+      sessionStorage.setItem('js-docs', sessionValue);
+    }
   }
 
-  private toggleTocContent(clickRoot: HTMLElement[]): void{
-    const liElement = clickRoot.find(node => node.nodeName === 'LI');
-    const liContent = liElement?.nodeName === 'LI' ? (liElement?.innerText) : '';
-    if(liElement?.nodeName === 'LI' && liContent){
-      this.mocContent = `${this.baseMocUrl}/${liContent.toLocaleLowerCase()}.md`;
-      this.pocContent = `${this.basePocUrl}/${liContent.toLocaleLowerCase()}.md`;
+  private toggleTocContent(clickRoot: HTMLElement[], sessionItem?: any): void{
+    let liElement: HTMLElement | undefined;
+    if(sessionItem?.tocValue && clickRoot.length === 0){
+      const tocLis = this.toc?.querySelectorAll('li');
+      tocLis?.forEach(tocLi => {
+        if(tocLi.getAttribute('value') === sessionItem?.tocValue) liElement = tocLi;
+      });
+    }else{
+      liElement = clickRoot.find(node => node.nodeName === 'LI');
+    }
+    this.tocLiValue = liElement?.nodeName === 'LI' ? liElement?.getAttribute('value') : '';
+    if(liElement?.nodeName === 'LI' && this.tocLiValue){
+      this.mocContent = `${this.baseMocUrl}/${this.tocLiValue}.md`;
+      this.pocContent = `${this.basePocUrl}/${this.tocLiValue}.md`;
       const tocLis = this.toc?.querySelectorAll('li');
       tocLis?.forEach(li => {
         li.classList.remove('active');
@@ -90,12 +103,14 @@ export class JsDocsComponent implements OnInit {
       liElement.classList.remove('collapseIcon');
       this.moc?.setAttribute('src', this.mocContent);
       this.poc?.setAttribute('src', this.pocContent);
-      this.breadcrumbs = `Js Docs / ${liContent.charAt(0).toLocaleUpperCase() + liContent.slice(1)}`;
-      // console.log("toggleTocContent", [clickRoot, liElement, liContent]);
+      this.breadcrumbs = `Js Docs / ${this.tocLiValue.charAt(0).toLocaleUpperCase() + this.tocLiValue.slice(1)}`;
+      const sessionValue: string = JSON.stringify({ isInit: false, tocValue: this.tocLiValue });
+      sessionStorage.setItem('js-docs', sessionValue);
+      // console.log("toggleTocContent", [clickRoot, liElement, this.tocLiValue]);
     }
   }
 
-  private togglePocContent(clickRoot: HTMLElement[]): void{
+  private togglePocContent(clickRoot: HTMLElement[], sessionItem?: any): void{
     const liElement = clickRoot.find(node => node.nodeName === 'LI');
     const liContent = liElement?.nodeName === 'LI' ? (liElement?.innerText) : '';
     const pocLis = this.poc?.querySelectorAll('li');
@@ -111,6 +126,8 @@ export class JsDocsComponent implements OnInit {
         }
       });
       this.isClick = true;
+      const sessionValue: string = JSON.stringify({ isInit: false, tocValue: this.tocLiValue ,pocValue: liContent });
+      sessionStorage.setItem('js-docs', sessionValue);
     }
     // console.log("togglePocContent", [clickRoot, liElement, liContent, mocH2s]);
   }
