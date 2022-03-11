@@ -1,6 +1,6 @@
 <ul>
-  <li class="active expandIcon">Preface</li>
-  <li class="collapseIcon">Introduction</li>
-  <li class="collapseIcon">Type</li>
+  <li class="active expandIcon" value="preface">自序</li>
+  <li class="collapseIcon" value="introduction">基本介紹</li>
+  <li class="collapseIcon" value="type">類型</li>
 </ul>
 

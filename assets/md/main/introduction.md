@@ -20,19 +20,19 @@ JavaScript 和 HTML 與 CSS 並列網頁前端三大核心技術，然而，HTML
 <br>
 <br>
 
-## 完整的 JavaScript
 
-完整的 JavaScript 包含以下：
 
-- ECMAScript： <br>
-是語法標準的規格書，由 ECMA International 組織訂定了語法標準，而各軟體工具採用其制訂的標準，逕行開發出各自版本的 JavaScript。
+- 完整的 JavaScript 包含以下：
 
-- BOM (瀏覽器物件模型)：<br>
-BOM
+  - ECMAScript： <br>
+  是語法標準的規格書，由 ECMA International 組織訂定了語法標準，而各軟體工具採用其制訂的標準，逕行開發出各自版本的 JavaScript。
 
-- DOM (文件物件模型)：<br>
-DOM
-<br>
+  - BOM (瀏覽器物件模型)：<br>
+  BOM
+
+  - DOM (文件物件模型)：<br>
+  DOM
+  <br>
 
 
 
